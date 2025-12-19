@@ -9,13 +9,13 @@ const roomRoutes = require("./routes/roomRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
 const contactRoutes = require("./routes/contactRoutes"); 
 dotenv.config();
-connectDB(); // Connect to PostgreSQL
+connectDB(); 
 
 const app = express();
 
-// Middleware
-app.use(cors()); // Allows Frontend to talk to Backend
-app.use(express.json({ limit: "50mb" })); // Increased limit for image uploads
+// Middlewares
+app.use(cors()); 
+app.use(express.json({ limit: "50mb" }));
 
 // Routes
 app.use("/api/auth", authRoutes);

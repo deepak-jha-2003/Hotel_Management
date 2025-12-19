@@ -8,20 +8,17 @@ import { motion, AnimatePresence } from "framer-motion";
 const RoomListingPage = () => {
   const dispatch = useDispatch();
 
-  // 1. Get 'allRooms' to detect data changes, and 'filteredRooms' for display
   const { filteredRooms, allRooms } = useSelector((state) => state.rooms);
 
-  // 2. Initial State with Price Limit set to 20,000
   const [filters, setFilters] = useState({
     search: "",
     type: "",
-    price: 20000, // <--- DEFAULT FILTER VALUE (Matches slider max)
+    price: 20000, // DEFAULT FILTER VALUE
     amenities: [],
   });
 
   const allAmenities = ["Wi-Fi", "Pool", "AC", "Breakfast", "Parking"];
 
-  // --- 3. POLLING (Auto-Update Rooms every 5 seconds) ---
   useEffect(() => {
     // Initial fetch
     dispatch(fetchRooms());
@@ -30,11 +27,9 @@ const RoomListingPage = () => {
       dispatch(fetchRooms());
     }, 5000);
 
-    // Cleanup interval on unmount
     return () => clearInterval(intervalId);
   }, [dispatch]);
 
-  // --- 4. APPLY FILTERS (Run when Filters OR Data changes) ---
   useEffect(() => {
     dispatch(filterRooms(filters));
   }, [filters, allRooms, dispatch]);
@@ -94,7 +89,7 @@ const RoomListingPage = () => {
               type="range"
               name="price"
               min="100"
-              max="20000" // <--- SLIDER LIMIT set to 20,000
+              max="20000" // SLIDER LIMIT set to 20,000
               value={filters.price}
               onChange={handleFilterChange}
               className="w-full h-2 bg-beige rounded-lg appearance-none cursor-pointer accent-gold"
@@ -178,5 +173,7 @@ const RoomListingPage = () => {
     </div>
   );
 };
+
+
 
 export default RoomListingPage;

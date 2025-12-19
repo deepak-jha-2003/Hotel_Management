@@ -25,7 +25,6 @@ const { bookings } = useSelector((state) => state.bookings);
 
   // Memoized data processing
   const { monthlyRevenue, bookingsByType } = useMemo(() => {
-    // 1. Process Monthly Revenue
     const revenueData = {};
     const monthNames = [
       "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -132,5 +131,6 @@ const { bookings } = useSelector((state) => state.bookings);
     </motion.div>
   );
 };
+
 
 export default ReportsPage;

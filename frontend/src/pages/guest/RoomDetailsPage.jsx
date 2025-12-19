@@ -8,13 +8,11 @@ import { FaChevronLeft, FaChevronRight, FaSpinner } from "react-icons/fa";
 const RoomDetailsPage = () => {
   const { id } = useParams();
   
-  // 1. Get status along with the rooms
   const { allRooms, status } = useSelector((state) => state.rooms);
   
   const room = allRooms.find((r) => r.id === id);
   const [currentImage, setCurrentImage] = useState(0);
 
-  // 2. SHOW LOADING SPINNER while fetching data
   if (status === "loading" || status === "idle") {
     return (
       <div className="flex justify-center items-center h-screen bg-beige">
@@ -24,7 +22,6 @@ const RoomDetailsPage = () => {
     );
   }
 
-  // 3. Show "Not Found" only if loading is FINISHED and room is still missing
   if (!room) {
     return (
       <div className="text-center py-20 font-heading text-2xl text-deep-brown">
@@ -140,5 +137,6 @@ const RoomDetailsPage = () => {
     </motion.div>
   );
 };
+
 
 export default RoomDetailsPage;

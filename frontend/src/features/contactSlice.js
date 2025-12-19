@@ -31,7 +31,7 @@ export const fetchMessages = createAsyncThunk(
   }
 );
 
-// 3. Delete Message (NEW)
+// 3. Delete Message
 export const deleteMessage = createAsyncThunk(
   "contacts/delete",
   async (id, { getState, rejectWithValue }) => {
@@ -69,5 +69,6 @@ const contactSlice = createSlice({
       });
   },
 });
+
 
 export default contactSlice.reducer;

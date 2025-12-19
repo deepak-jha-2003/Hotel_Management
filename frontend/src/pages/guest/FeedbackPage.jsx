@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { sendMessage } from "../../features/contactSlice"; // Import action
+import { sendMessage } from "../../features/contactSlice";
 import Button from "../../components/Button";
 import Modal from "../../components/Modal";
 import { motion } from "framer-motion";
@@ -8,7 +8,7 @@ import { FaSpinner } from "react-icons/fa";
 
 const FeedbackPage = () => {
   const dispatch = useDispatch();
-  const { status } = useSelector((state) => state.contacts); // Get status
+  const { status } = useSelector((state) => state.contacts); 
   
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -42,7 +42,7 @@ const FeedbackPage = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {/* Contact Info (Same as before) */}
+          {/* Contact Info */}
           <div className="font-body text-deep-brown">
             <h3 className="text-2xl font-heading text-gold mb-4">Contact Information</h3>
             <p className="mb-2">123 Luxury Lane, Jaipur, IN</p>
@@ -77,5 +77,6 @@ const FeedbackPage = () => {
     </>
   );
 };
+
 
 export default FeedbackPage;

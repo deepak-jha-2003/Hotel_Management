@@ -178,7 +178,7 @@ const Navbar = () => {
                   </NavLink>
                 ))}
 
-                {/* AUTH BUTTONS (Mobile) */}
+                {/* AUTH BUTTONS (for Mobile) */}
                 <div className="pt-6 border-t border-gold/20">
                   <button
                     onClick={() => {

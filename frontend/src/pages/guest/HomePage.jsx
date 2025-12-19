@@ -1,4 +1,4 @@
-import React, { useMemo } from "react"; // 1. Import useMemo
+import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Button from "../../components/Button";
@@ -15,21 +15,13 @@ const TestimonialCard = ({ quote, author }) => (
   </div>
 );
 
-const HomePage = () => {
-  // --- FIX START ---
-  
-  // 1. Select the raw array. If 'allRooms' hasn't changed in Redux, 
-  // this returns the exact same memory reference.
-  const allRooms = useSelector((state) => state.rooms.allRooms);
 
-  // 2. Use useMemo to derive the "top 3".
-  // This operation only runs if 'allRooms' reference changes.
+const HomePage = () => {
+  const allRooms = useSelector((state) => state.rooms.allRooms);
   const featuredRooms = useMemo(() => {
     return allRooms ? allRooms.slice(0, 3) : [];
   }, [allRooms]);
   
-  // --- FIX END ---
-
   const amenities = [
     { icon: <FaSwimmingPool size={30} />, name: "Luxury Pool" },
     { icon: <FaSpa size={30} />, name: "World-Class Spa" },
@@ -165,5 +157,7 @@ const HomePage = () => {
     </motion.div>
   );
 };
+
+
 
 export default HomePage;

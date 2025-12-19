@@ -36,7 +36,7 @@ const GuestRecordsPage = () => {
     setIsModalOpen(true);
   };
 
-  // --- NEW: DELETE FUNCTION ---
+  // --- DELETE FUNCTION ---
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this guest record? This will remove the associated booking.")) {
       dispatch(deleteBooking(id));
@@ -180,5 +180,6 @@ const GuestRecordsPage = () => {
     </>
   );
 };
+
 
 export default GuestRecordsPage;

@@ -64,6 +64,7 @@ const HeroSearchBar = () => {
           />
         </div>
 
+
         {/* Check-out */}
         <div className="w-full">
           <DatePicker

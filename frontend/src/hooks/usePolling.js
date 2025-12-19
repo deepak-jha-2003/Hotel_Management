@@ -18,4 +18,5 @@ const usePolling = (action, interval = 5000, dependencies = []) => {
   }, [dispatch, action, ...dependencies]);
 };
 
+
 export default usePolling;

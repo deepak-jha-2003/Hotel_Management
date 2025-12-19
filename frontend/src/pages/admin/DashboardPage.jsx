@@ -66,7 +66,6 @@ const DashboardPage = () => {
       
       {/* --- RESPONSIVE GRID --- */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-      {/* --- END RESPONSIVE GRID --- */}
         <StatCard
           title="Total Revenue"
           value={`₹${totalRevenue.toLocaleString()}`}
@@ -95,7 +94,6 @@ const DashboardPage = () => {
 
       {/* --- RESPONSIVE GRID --- */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      {/* --- END RESPONSIVE GRID --- */}
         <div className="bg-soft-white p-6 rounded-xl shadow-lg">
           <h3 className="text-xl font-heading text-deep-brown mb-4">
             Revenue by Booking
@@ -138,5 +136,6 @@ const DashboardPage = () => {
     </motion.div>
   );
 };
+
 
 export default DashboardPage;

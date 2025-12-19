@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-//  Create Booking (User - Public Endpoint)
+//  Create Booking (User)
 export const createBooking = createAsyncThunk(
   "bookings/create",
   async (bookingData, { rejectWithValue }) => {
@@ -14,7 +14,7 @@ export const createBooking = createAsyncThunk(
   }
 );
 
-//  Fetch All Bookings (Admin Only - Requires Token)
+//  Fetch All Bookings (Admin Only)
 export const fetchBookings = createAsyncThunk(
   "bookings/fetchAll",
   async (_, { getState, rejectWithValue }) => {
@@ -36,7 +36,7 @@ export const fetchBookings = createAsyncThunk(
   }
 );
 
-//  Fetch User Bookings (Guest - Public Endpoint)
+//  Fetch User Bookings (Guest)
 export const fetchUserBookings = createAsyncThunk(
   "bookings/fetchUserBookings",
   async (email, { rejectWithValue }) => {
@@ -49,7 +49,7 @@ export const fetchUserBookings = createAsyncThunk(
   }
 );
 
-// 4. Update Booking Status (Admin Only - Requires Token)
+// 4. Update Booking Status (Admin Only)
 export const updateBookingStatus = createAsyncThunk(
   "bookings/updateStatus",
   async ({ id, status }, { getState, rejectWithValue }) => {
@@ -84,7 +84,7 @@ export const deleteBooking = createAsyncThunk(
       const config = { headers: { Authorization: `Bearer ${token}` } };
 
       await axios.delete(`/api/bookings/${id}`, config);
-      return id; // Return ID so we can remove it from the list
+      return id;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || error.message);
     }
@@ -114,7 +114,6 @@ const bookingSlice = createSlice({
       })
       .addCase(createBooking.fulfilled, (state, action) => {
         state.status = "succeeded";
-        // Optionally add to list, though usually we navigate away
         state.bookings.push(action.payload);
       })
       .addCase(createBooking.rejected, (state, action) => {
@@ -132,7 +131,6 @@ const bookingSlice = createSlice({
       // Update Status
       .addCase(updateBookingStatus.fulfilled, (state, action) => {
         const updatedBooking = action.payload;
-        // Update the list immediately
         const index = state.bookings.findIndex((b) => b.id === updatedBooking.id);
         if (index !== -1) {
           state.bookings[index] = updatedBooking;
@@ -151,6 +149,7 @@ const bookingSlice = createSlice({
       });
   },
 });
+
 
 export const { clearNotification } = bookingSlice.actions;
 export default bookingSlice.reducer;

@@ -104,4 +104,5 @@ const RoomCard = ({ room }) => {
   );
 };
 
+
 export default RoomCard;

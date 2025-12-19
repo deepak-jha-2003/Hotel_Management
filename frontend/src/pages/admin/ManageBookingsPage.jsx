@@ -14,10 +14,8 @@ const ManageBookingsPage = () => {
 
   // --- BUTTON FUNCTIONING ---
   const handleStatusChange = async (id, newStatus) => {
-    // 1. Dispatch the update action to Redux/Backend
     await dispatch(updateBookingStatus({ id, status: newStatus }));
     
-    // 2. Immediately re-fetch bookings to show updated status to Admin
     dispatch(fetchBookings());
   };
 
@@ -106,5 +104,6 @@ const ManageBookingsPage = () => {
     </motion.div>
   );
 };
+
 
 export default ManageBookingsPage;

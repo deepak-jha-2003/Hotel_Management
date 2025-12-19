@@ -18,8 +18,8 @@ const BookingPage = () => {
     phone: "",
     aadhaar: "",
     address: "",
-    aadhaarFrontImg: "", // Will store Base64 string
-    aadhaarBackImg: "",  // Will store Base64 string
+    aadhaarFrontImg: "",
+    aadhaarBackImg: "",
   });
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [startDate, setStartDate] = useState(null);
@@ -41,7 +41,7 @@ const BookingPage = () => {
     }
   }, [startDate, endDate, room.price]);
 
-  // --- NEW: Helper to convert file to Base64 ---
+  // --- Helper to convert file to Base64 ---
   const convertToBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
@@ -55,12 +55,11 @@ const BookingPage = () => {
     });
   };
 
-  // --- UPDATED: Handle Input Change ---
+  // --- Handle Input Change ---
   const handleInputChange = async (e) => {
     const { name, value, files } = e.target;
 
     if (files && files.length > 0) {
-      // If it's a file input, convert to Base64
       try {
         const base64 = await convertToBase64(files[0]);
         setFormData((prev) => ({ ...prev, [name]: base64 }));
@@ -68,7 +67,6 @@ const BookingPage = () => {
         console.error("Error converting file", err);
       }
     } else {
-      // Normal text input
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };
@@ -123,7 +121,6 @@ const BookingPage = () => {
     }
 
     const bookingDetails = {
-      // We don't generate ID here anymore, Backend does it.
       roomId: room.id,
       roomName: room.name,
       roomImage: room.images[0],
@@ -181,12 +178,10 @@ const BookingPage = () => {
           <div className="flex gap-4">
             <div className="w-full">
               <label className="block text-sm font-body font-medium text-gray-700 mb-1">Aadhaar Front</label>
-              {/* REMOVED value={...} from file input to avoid React error */}
               <input type="file" name="aadhaarFrontImg" accept="image/*" onChange={handleInputChange} className="w-full p-3 bg-white border border-beige rounded-lg hover:ring-1 hover:ring-gold focus:ring-2 focus:ring-gold focus:outline-none" required />
             </div>
             <div className="w-full">
               <label className="block text-sm font-body font-medium text-gray-700 mb-1">Aadhaar Back</label>
-              {/* REMOVED value={...} from file input to avoid React error */}
               <input type="file" name="aadhaarBackImg" accept="image/*" onChange={handleInputChange} className="w-full p-3 bg-white border border-beige rounded-lg hover:ring-1 hover:ring-gold focus:ring-2 focus:ring-gold focus:outline-none" required />
             </div>
           </div>
@@ -213,6 +208,7 @@ const BookingPage = () => {
           {error && <p className="text-red-600 text-sm font-body">{error}</p>}
           <Button type="submit" className="w-full">Proceed to Payment</Button>
         </form>
+
 
         {/* Summary */}
         <div className="bg-beige/80 rounded-lg p-6 space-y-4 h-fit">

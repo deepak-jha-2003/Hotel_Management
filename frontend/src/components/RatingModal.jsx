@@ -28,6 +28,7 @@ const RatingModal = ({ isOpen, onClose, roomId, userId }) => {
       });
   };
 
+  
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Rate Your Stay">
       <form onSubmit={handleSubmit} className="space-y-4 text-center">

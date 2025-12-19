@@ -29,12 +29,10 @@ const ManageRoomsPage = () => {
     }
   };
 
-  // --- NEW: Toggle Logic ---
+  // --- Toggle Logic ---
   const handleToggleAvailability = (room) => {
-    // 1. Calculate new status
     const newStatus = !room.isAvailable;
     
-    // 2. Dispatch update immediately
     dispatch(updateRoom({ 
       id: room.id, 
       updatedData: { isAvailable: newStatus } 
@@ -65,7 +63,7 @@ const ManageRoomsPage = () => {
                 <th className="text-left p-3">Name</th>
                 <th className="text-left p-3">Type</th>
                 <th className="text-left p-3">Price</th>
-                <th className="text-center p-3">Status</th> {/* New Column */}
+                <th className="text-center p-3">Status</th>
                 <th className="text-left p-3">Actions</th>
               </tr>
             </thead>
@@ -86,7 +84,7 @@ const ManageRoomsPage = () => {
                   <td className="p-3">{room.type}</td>
                   <td className="p-3">₹{room.price}</td>
 
-                  {/* --- NEW: Interactive Status Badge --- */}
+                  {/* --- Interactive Status Badge --- */}
                   <td className="p-3 text-center">
                     <button
                       onClick={() => handleToggleAvailability(room)}
@@ -108,7 +106,6 @@ const ManageRoomsPage = () => {
                       )}
                     </button>
                   </td>
-                  {/* -------------------------------------- */}
 
                   <td className="p-3 space-x-3">
                     <button
@@ -141,5 +138,6 @@ const ManageRoomsPage = () => {
     </>
   );
 };
+
 
 export default ManageRoomsPage;

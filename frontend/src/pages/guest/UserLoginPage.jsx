@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-// FIXED: Changed 'userLogin' to 'loginUser' to match the Slice
 import { loginUser, registerUser } from "../../features/userAuthSlice"; 
 import Button from "../../components/Button";
 import { motion } from "framer-motion";
 
 const UserLoginPage = () => {
-  const [isRegistering, setIsRegistering] = useState(false); // Toggle between Login/Register
+  const [isRegistering, setIsRegistering] = useState(false);
   
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -26,11 +25,8 @@ const UserLoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isRegistering) {
-        // Sign Up Mode
         dispatch(registerUser({ name, email, password }));
     } else {
-        // Login Mode
-        // FIXED: Using the correct action name here
         dispatch(loginUser({ email, password }));
     }
   };
@@ -57,7 +53,6 @@ const UserLoginPage = () => {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           
-          {/* Only show Name field if Registering */}
           {isRegistering && (
             <div>
                 <label className="block text-sm font-body font-medium text-gray-700">Full Name</label>
@@ -112,5 +107,7 @@ const UserLoginPage = () => {
     </div>
   );
 };
+
+
 
 export default UserLoginPage;

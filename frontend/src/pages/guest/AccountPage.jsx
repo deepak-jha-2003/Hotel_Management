@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import BookingHistoryCard from "../../components/BookingHistoryCard";
 import { fetchUserBookings } from "../../features/bookingSlice";
-import RatingModal from "../../components/RatingModal"; // Import Modal
+import RatingModal from "../../components/RatingModal"; 
 
 const AccountPage = () => {
   const dispatch = useDispatch();
@@ -96,5 +96,6 @@ const AccountPage = () => {
     </motion.div>
   );
 };
+
 
 export default AccountPage;

@@ -59,10 +59,11 @@ const authSlice = createSlice({
       })
       .addCase(adminLogin.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload; // Will show "Not authorized as Admin"
+        state.error = action.payload;
       });
   },
 });
+
 
 export const { logout } = authSlice.actions;
 export default authSlice.reducer;

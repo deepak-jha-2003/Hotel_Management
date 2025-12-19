@@ -5,7 +5,7 @@ import { FaCalendarAlt, FaCheckCircle, FaTimesCircle, FaClock } from "react-icon
 const BookingHistoryCard = ({ booking }) => {
   const { roomName, roomImage, checkIn, checkOut, totalPrice, status, roomId } = booking;
 
-  // --- HELPER: Status Design ---
+  // --- HELPER: Status Design --
   const getStatusContent = () => {
     switch (status) {
       case "Approved":

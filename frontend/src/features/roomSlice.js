@@ -1,8 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// Helper to get Token for Admin/Protected actions
-export const getToken = () => localStorage.getItem("userToken"); // Or adminToken depending on your auth setup
+export const getToken = () => localStorage.getItem("userToken");
 
 // --- 1. FETCH ROOMS (Public) ---
 export const fetchRooms = createAsyncThunk(
@@ -22,7 +21,6 @@ export const addRoom = createAsyncThunk(
   "rooms/addRoom",
   async (roomData, { rejectWithValue }) => {
     try {
-      // Typically admin actions use the admin token
       const token = localStorage.getItem("adminToken"); 
       const config = { headers: { Authorization: `Bearer ${token}` } };
       const response = await axios.post("/api/rooms", roomData, config);
@@ -70,7 +68,7 @@ export const rateRoom = createAsyncThunk(
     try {
       const token = localStorage.getItem("userToken");
       const config = { headers: { Authorization: `Bearer ${token}` } };
-      // Note: The endpoint is /api/rooms/:id/rate
+      //The endpoint is /api/rooms/:id/rate
       const response = await axios.post(
         `/api/rooms/${id}/rate`,
         { rating, review, userId },
@@ -104,7 +102,6 @@ const roomSlice = createSlice({
         const roomName = room.name ? room.name.toLowerCase() : "";
         const roomType = room.type || "";
         
-        // FIX: Ensure both are converted to Numbers for safe comparison
         const roomPrice = parseFloat(room.price) || 0; 
         const filterPrice = parseFloat(price) || 0;
         
@@ -113,7 +110,6 @@ const roomSlice = createSlice({
         const matchesSearch = roomName.includes(search.toLowerCase());
         const matchesType = type === "" || roomType === type;
         
-        // FIX: Compare Numbers instead of potentially mixed types
         const matchesPrice = roomPrice <= filterPrice; 
         
         const matchesAmenities =
@@ -133,7 +129,6 @@ const roomSlice = createSlice({
       .addCase(fetchRooms.fulfilled, (state, action) => {
         state.loading = false;
         state.allRooms = action.payload;
-        // Only set filteredRooms if it's currently empty (first load)
         if (state.filteredRooms.length === 0) {
           state.filteredRooms = action.payload;
         }
@@ -154,7 +149,6 @@ const roomSlice = createSlice({
         const index = state.allRooms.findIndex((r) => r.id === action.payload.id);
         if (index !== -1) {
           state.allRooms[index] = action.payload;
-          // Update filtered list too
           const fIndex = state.filteredRooms.findIndex((r) => r.id === action.payload.id);
           if (fIndex !== -1) state.filteredRooms[fIndex] = action.payload;
         }
@@ -171,12 +165,13 @@ const roomSlice = createSlice({
         const { id, newRating } = action.payload;
         const room = state.allRooms.find((r) => r.id === id);
         if (room) {
-          room.rating = newRating; // Update rating locally immediately
+          room.rating = newRating; 
           room.ratingCount += 1;
         }
       });
   },
 });
+
 
 export const { filterRooms } = roomSlice.actions;
 export default roomSlice.reducer;

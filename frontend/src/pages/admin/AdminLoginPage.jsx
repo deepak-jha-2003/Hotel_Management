@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { adminLogin } from "../../features/authSlice"; // Import the new action
+import { adminLogin } from "../../features/authSlice";
 import Button from "../../components/Button";
 import { motion } from "framer-motion";
 
@@ -77,5 +77,6 @@ const AdminLoginPage = () => {
     </div>
   );
 };
+
 
 export default AdminLoginPage;

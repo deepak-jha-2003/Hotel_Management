@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchMessages, deleteMessage } from "../../features/contactSlice"; // Import deleteMessage
+import { fetchMessages, deleteMessage } from "../../features/contactSlice"; 
 import { motion } from "framer-motion";
-import { FaEnvelope, FaTrash, FaReply } from "react-icons/fa"; // Import Icons
+import { FaEnvelope, FaTrash, FaReply } from "react-icons/fa"; 
 
 const AdminMessagesPage = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,6 @@ const AdminMessagesPage = () => {
   };
 
   const handleReply = (email, name) => {
-    // Opens default email client with pre-filled details
     const subject = `Reply to your inquiry - Serenity Hotels`;
     const body = `Hi ${name},\n\nThank you for contacting us.\n\nBest Regards,\nSerenity Team`;
     window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -78,5 +77,6 @@ const AdminMessagesPage = () => {
     </motion.div>
   );
 };
+
 
 export default AdminMessagesPage;

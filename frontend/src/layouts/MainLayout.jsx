@@ -3,11 +3,11 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import UserNotifications from "../components/UserNotifications";
-import usePolling from "../hooks/usePolling"; // Import the Hook
-import { fetchRooms } from "../features/roomSlice"; // Import the Action
+import usePolling from "../hooks/usePolling";
+import { fetchRooms } from "../features/roomSlice"; 
 
 const MainLayout = () => {
-  // POLL ROOMS: Auto-refresh rooms every 5 seconds so users see updates instantly
+  
   usePolling(fetchRooms, 5000);
 
   return (

@@ -21,7 +21,7 @@ const Button = ({
   const classNames = `py-3 px-8 rounded-full font-body font-semibold transition-all duration-300 ${styles[variant]} ${className}`;
  
 
-  // Check if 'to' prop is passed then it should be a link
+  // Check if 'to' prop is passed then it should be a link 
   if (to) {
     return (
       <motion.div

@@ -31,7 +31,7 @@ export const loginUser = createAsyncThunk(
   }
 );
 
-// 3. Load User from Database (NEW)
+// 3. Load User from Database
 export const loadUser = createAsyncThunk(
   "userAuth/loadUser",
   async (_, { rejectWithValue }) => {
@@ -121,6 +121,7 @@ const userAuthSlice = createSlice({
       });
   },
 });
+
 
 export const { userLogout } = userAuthSlice.actions;
 export default userAuthSlice.reducer;

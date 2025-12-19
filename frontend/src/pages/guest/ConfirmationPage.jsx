@@ -3,7 +3,7 @@ import { useLocation, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Button from "../../components/Button";
 import { FaCheckCircle } from "react-icons/fa";
-
+import { Navigate } from "react-router-dom";
 const ConfirmationPage = () => {
   const location = useLocation();
   const { bookingId, name } = location.state || {};
@@ -12,12 +12,13 @@ const ConfirmationPage = () => {
     return (
       <div className="text-center py-20">
         <h1 className="text-2xl font-heading">Invalid Session</h1>
-        <Button onClick={() => navigate("/")} className="mt-4">
+        <Button onClick={() => Navigate("/")} className="mt-4">
           Back Home
         </Button>
       </div>
     );
   }
+  
 
   return (
     <motion.div
