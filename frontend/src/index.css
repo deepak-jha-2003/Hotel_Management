@@ -1,0 +1,53 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap");
+@import "react-datepicker/dist/react-datepicker.css";
+
+/* Define the custom tokens using @theme */
+@theme {
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Poppins", sans-serif;
+
+  --color-beige: #F7F2E7;
+  --color-gold: #C5A25A;
+  --color-deep-brown: #3E2C20;
+  --color-soft-white: #FFFFFF;
+}
+
+/* Base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-body text-deep-brown bg-beige;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+/* Component styles */
+@layer components {
+  .react-datepicker-wrapper {
+    width: 100%;
+  }
+  .react-datepicker__input-container input {
+    @apply w-full p-3 bg-soft-white border border-beige rounded-lg focus:outline-none focus:ring-2 focus:ring-gold;
+  }
+  .react-datepicker {
+    @apply font-body !rounded-lg;
+  }
+  .react-datepicker__header {
+    @apply !bg-gold !border-b-0;
+  }
+  .react-datepicker__current-month,
+  .react-datepicker__day-name,
+  .react-datepicker-time__header {
+    @apply !text-soft-white;
+  }
+  .react-datepicker__day--selected,
+  .react-datepicker__day--in-selecting-range,
+  .react-datepicker__day--in-range {
+    @apply !bg-gold;
+  }
+}
