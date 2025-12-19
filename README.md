@@ -183,4 +183,8 @@ If you haven't set up a real Gmail App Password, the system will log a "Demo Mod
 
 ## 📜 License
 
+<<<<<<< HEAD
 All rights are reserved by DMVCoreTech
+=======
+All rights are reserved by DMVCoreTech
+>>>>>>> dbb37fb55d68e65b9ef004f031adcd0454111021
